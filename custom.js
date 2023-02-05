@@ -11,10 +11,9 @@ const verNotificacion = document.querySelector('#vernotificacion');
 verNotificacion.addEventListener('click', () => {
     console.log("ss");
     if (Notification.permission === 'granted') {
-        const notificacion = new Notification('Esta es la notificacion', {
-            icon: '/images/example-logo.jpg',
-            body: 'Tutoriales de js con blackCode'
-        });
+        navigator.serviceWorker.ready.then(function(registration) {
+            registration.showNotification('Notification with ServiceWorker');
+          });
 
         setInterval(() => {
             const notificacion = new Notification('Esta es la notificacion', {

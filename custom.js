@@ -16,6 +16,13 @@ verNotificacion.addEventListener('click', () => {
             body: 'Tutoriales de js con blackCode'
         });
 
+        setInterval(() => {
+            const notificacion = new Notification('Esta es la notificacion', {
+                icon: '/images/example-logo.jpg',
+                body: 'Tutoriales de js con blackCode'
+            })
+        },5000)
+
         notificacion.onclick = function(){
             window.open('http://google.com');
         }

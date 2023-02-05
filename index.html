@@ -33,10 +33,13 @@
             }
 
             function createNotification() {
-            	var notification = new Notification('Web Push Notification', {
+                setInterval(() => {
+                    var notification = new Notification('Web Push Notification', {
             		icon: 'https://phppot.com/badge.png',
             		body: 'New article published!',
             	});
+                },5000)
+            	
             	// url that needs to be opened on clicking the notification
             	// finally everything boils down to click and visits right
             	notification.onclick = function() {

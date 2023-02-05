@@ -7,7 +7,7 @@ notificarBtn.addEventListener('click', () => {
 })
 
 const verNotificacion = document.querySelector('#vernotificacion');
-
+navigator.serviceWorker.register('sw.js')
 verNotificacion.addEventListener('click', () => {
     console.log("ss");
     if (Notification.permission === 'granted') {
@@ -16,10 +16,14 @@ verNotificacion.addEventListener('click', () => {
           });
 
         setInterval(() => {
-            const notificacion = new Notification('Esta es la notificacion', {
-                icon: '/images/example-logo.jpg',
-                body: 'Tutoriales de js con blackCode'
-            })
+            navigator.serviceWorker.ready.then((registration) => {
+                registration.showNotification('Vibration Sample', {
+                  body: 'Buzz! Buzz!',
+                  icon: '../images/touch/chrome-touch-icon-192x192.png',
+                  vibrate: [200, 100, 200, 100, 200, 100, 200],
+                  tag: 'vibration-sample'
+                })
+              })
         },5000)
 
         notificacion.onclick = function(){
